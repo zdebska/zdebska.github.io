@@ -1,0 +1,460 @@
+/* 
+----  Main styles of CV page  -----
+---- Author: Zdebska Kateryna -----
+*/
+html,
+body {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1100px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #F5F6F0;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Size of full page */
+.content {
+
+    min-height: fit-content;
+}
+
+/* Styles of texts */
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Basic style for sections */
+section{
+    padding-top : 50px;
+    height: fit-content;
+    padding: 20px;
+}
+
+/* ---- About ---- */
+
+#about{
+    background-image: url("img/backgrounds/about.jpg");
+    background-size: cover;
+    background-position: right;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+#about p{
+    padding: 20px 0;
+    width: 60%;
+}
+
+#about p b{
+    font-size: 18px;
+}
+
+/* Style for "button" DOWNLOAD CV */
+#about a{
+    border: 1px solid #333;
+    text-decoration: none;
+    color : #444;
+    font-size: 14px;
+    width:max-content;
+    padding: 4px;
+}
+
+/* Animation when hovering on the "button" */
+#about a:hover{
+    border: 1px solid black;
+    color : black;
+    background-color: #bac29c;
+}
+
+/* ---- Skills ---- */
+
+#skills{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+#skills h2{
+    align-self: flex-start;
+}
+
+/* Grid for two or one column */
+#skills .cols{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 25px;
+
+}
+
+#skills h3{
+    margin-bottom: 10px;
+}
+
+/* Styling for soft skills section */
+#skills .soft-skills{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: flex-start;
+
+}
+
+/* Styling for tech skills section with grid 3x3 */
+#skills .tech-skills .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-auto-rows: repeat(3, 1fr); 
+    gap: 10px; 
+    list-style: none; 
+    padding: 0; 
+}
+
+#skills .tech-skills .grid-item {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    overflow: hidden;
+}
+
+#skills .tech-skills .grid-item img {
+    max-width: 100%; 
+    max-height: 100%; 
+    object-fit: cover; 
+}
+
+/* Animation when hovering on the logo */
+#skills .tech-skills .grid-item:hover img {
+    transform: scale(0.9); 
+    transition: all 0.5s; 
+}
+
+/* ---- Experience ---- */
+
+#experience{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+
+}
+
+/* Grid for 2x2 or 1x4 */
+#experience .projects{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    margin: auto;
+}
+
+#experience .images  {
+    background: #f8f8f8;
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+/* Resizing images to fit square */
+#experience .images  img {
+    float:top;
+    position: relative;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    
+}
+
+/* Style for sliding description */
+#experience .project {
+    position: relative;
+}
+
+#experience .project-info{
+    position: absolute;
+    top:0;
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: flex-start;
+    background: #89955a;
+    color:black;
+    opacity: 0;
+    transition: opacity 0.5s;
+    overflow: hidden;
+}
+
+/* Animation for description when hovering on the image  */
+@keyframes slide-left {
+    from {
+        margin-left: -100%;
+        margin-top: 100%;
+        width: 100%; 
+    }
+    
+    to {
+        margin-left: 0%;
+        margin-top: 1.3em;
+        width: 100%;
+    }
+    }
+@keyframes slide-down {
+    from {
+        margin-top: -100%;
+        height: 0%; 
+    }
+    
+    to {
+        margin-top: 0%;
+        height: 0%;
+    }
+}
+
+#experience .projects .project:hover img{
+    opacity: 0;
+}
+#experience .projects .project:hover .project-info{
+    opacity: 1;
+}
+#experience .projects .project:hover .project-info p{
+    animation: slide-left 0.4s;
+}
+#experience .projects .project:hover .project-info h3{
+    animation: slide-down 0.4s;
+}
+
+/* Style for link to github*/
+#experience .project-info a{
+    color: #333;
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid #333;
+    margin-top: 10px;
+}
+#experience .project-info a:hover{
+    background-color: #a1ac76;
+}
+
+/* ---- Education ---- */
+
+#education{
+    height: 100vh;
+    background-image: url("img/backgrounds/10152964.jpg");
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: flex-start;
+    color: rgb(0, 0, 112);
+    padding-left: 10%;
+    margin-top: 20px;
+}
+
+#education p{
+    margin: 50px 0;
+}
+
+/* Substitution the link with a logo */
+#education span a{
+    background-image: url("img/icons/FIT_barevne_RGB_CZ.png");
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 30px;
+    color: transparent;
+}
+
+/* Lines as studying steps */
+#education .horizontal-lines {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-self:flex-start;
+    margin-top: 10px; 
+}
+
+#education .line {
+    padding-top: 5px;
+    width: 18%; 
+    height: 1.5vh; 
+    border-radius: 10px;
+    background-color: rgb(0, 0, 112, 0.8); 
+}
+
+#education .horizontal-lines .line:nth-last-child(2){
+    background-color: rgba(141, 141, 177, 0.8); 
+}
+
+/* Style for years on left and right */
+#education .horizontal-lines .marker{
+    align-self: center;
+    justify-self: center;
+}
+
+/* Position of "3-years" above the third line */
+#education .years{
+    align-self: center;
+    padding-right: 2%;
+    font-weight: bold;
+    font-size: 85%;
+}
+
+
+
+
+
+
+
+#hobbies .section-content {
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) );
+    grid-gap: 10px;
+    margin-top: 40px;
+    padding-bottom: 120px;
+}
+
+
+/* Styling individual cards */
+#hobbies .section-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.img-container {
+    background-color: #F5F6F0;
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    transition: transform 0.3s ease; 
+}
+
+
+#hobbies .section-item h3 {
+    margin: 10px 0;
+}
+
+#hobbies .section-item p {
+    padding: 10px;
+    text-align: justify;
+
+}
+
+#hobbies .section-item:hover img {
+    transform: scale(1.05);
+    transition: all 0.5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---- Personal Information ---- */
+
+#personal-info{
+    background-color: #a1ac76;
+    width: 100%;
+    padding-bottom: 5px;
+    color: black;
+}
+
+/* Styling for main info */
+#personal-info a{
+    color: black;
+    text-decoration: none;
+    
+}
+#personal-info .info li{
+    width: fit-content;
+}
+#personal-info .info li:hover{
+    color: #B75F37;
+}
+
+#personal-info .info li:hover a{
+    color: #B75F37;
+
+}
+
+/* Styling for logo links */
+#personal-info img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    transition-duration: 0.5s;
+}
+
+#personal-info .social {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 5px;
+}
+
+#personal-info .social li{
+    padding: 2px;
+    list-style: none;
+    display: inline;
+
+}
+
+#personal-info .social li:hover img{
+    transform: scale(1.2);
+}
+
