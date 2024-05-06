@@ -17,7 +17,7 @@ function HideSidebar() {
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav .topbar a');
 window.onscroll = () => {
-    let isPageBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+    let isPageBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight-1;
 
     sections.forEach(sec => {
         let top = window.scrollY;
