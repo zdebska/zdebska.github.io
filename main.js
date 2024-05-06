@@ -17,7 +17,7 @@ function HideSidebar() {
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav .topbar a');
 window.onscroll = () => {
-    let isPageBottom = window.scrollY + window.innerHeight === document.documentElement.scrollHeight;
+    let isPageBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
 
     sections.forEach(sec => {
         let top = window.scrollY;
@@ -28,12 +28,16 @@ window.onscroll = () => {
         if (top >= offset && top < offset + height) {
             navLinks.forEach(links => {
                 links.classList.remove('active');
-                document.querySelector('header nav .topbar a[href*=' + id + ']').classList.add('active');
             });
-        } else if (isPageBottom && sec === sections[sections.length - 1]) {
-            // If at the bottom of the page, highlight the last navigation link
-            navLinks.forEach(links => links.classList.remove('active'));
-            document.querySelector('header nav .topbar a:last-child').classList.add('active');
+            document.querySelector('header nav .topbar a[href*=' + id + ']').classList.add('active');
         }
     });
+
+    // Check if the user has scrolled to the bottom of the page
+    if (isPageBottom) {
+        // Remove active class from all nav links
+        navLinks.forEach(links => links.classList.remove('active'));
+        // Add active class to the last navigation link (assuming it's the link to the "Contact" section)
+        document.querySelector('header nav .topbar a[href="#personal-info"]').classList.add('active');
+    }
 };
